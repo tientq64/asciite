@@ -1,0 +1,371 @@
+appearance()
+	-webkit-appearance arguments
+	appearance arguments
+user-drag()
+	-webkit-user-drag arguments
+	user-drag arguments
+colors = {
+	black: #10161a #fff
+	white: #fff #10161a
+	dark0: #10181e #fff
+	dark1: #131b21 #fff
+	dark: #202b33 #fff
+	dark3: #293742 #fff
+	gray1: #5c7080 #fff
+	gray: #738694 #10161a
+	gray3: #8a9ba8 #10161a
+	light1: #e1e8ed #10161a
+	light: #ebf1f5 #10161a
+	light3: #f5f8fa #10161a
+	red1: #c23030 #fff
+	red: #db3737 #fff
+	red3: #f55656 #fff
+	orange1: #bf7326 #fff
+	orange: #d9822b #fff
+	orange3: #f29d49 #fff
+	green1: #0d8050 #fff
+	green: #0f9960 #fff
+	green3: #15b371 #fff
+	blue1: #106ba3 #fff
+	blue: #137cbd #fff
+	blue3: #2b95d6 #fff
+}
+spaces = 16px 8px 4px 2px 1px 0
+body
+	margin 0
+	font-family "Roboto", sans-serif
+	font-size 20px
+	overflow hidden
+	user-select none
+	cursor default
+*, *:before, *:after
+	box-sizing border-box
+	vertical-align middle
+:focus
+	outline 0
+	box-shadow: 0 0 0 2px inset colors.blue[0]
+&[readonly]
+	&:focus
+		box-shadow: 0 0 0 2px inset colors.gray[0] !important
+	&::selection
+		background #a7b6c2
+[disabled]
+	opacity .5
+	pointer-events none !important
+	[disabled]
+		opacity unset
+::selection
+	background: colors.blue3[0]
+::-webkit-scrollbar
+	appearance none
+	width 8px
+	height 8px
+::-webkit-scrollbar-track
+	background #182026
+::-webkit-scrollbar-thumb
+	background #202b33
+	&:hover
+		background #5c7080
+	&:active
+		background: colors.blue[0]
+img, a
+	user-drag none
+hr
+	width 100%
+	margin 16px 0
+	border none
+	border-bottom: dashed 2px colors.dark[0]
+button
+input
+	height 32px
+	border 0
+	padding 0 8px
+	font inherit
+input
+	&:focus
+		&:invalid
+			box-shadow: 0 0 0 2px inset colors.red[0]
+	&[type=number]::-webkit-inner-spin-button
+		appearance none
+button
+input[type=button]
+input[type=submit]
+	display flex
+	justify-content center
+	align-items center
+	background: colors.dark[0]
+	color: colors.white[0]
+	&:hover
+		background: colors.dark3[0]
+	&:active
+		background: colors.dark1[0]
+.input-group
+	padding 2px 8px
+	&
+	> label
+		height 32px
+		display flex
+		align-items center
+		cursor text
+	> label
+		width 100%
+	&:focus-within
+		box-shadow: 0 0 0 2px inset colors.blue[0]
+		&:invalid
+			box-shadow: 0 0 0 2px inset colors.red[0] !important
+	input
+		height 100%
+		padding 0
+		flex-grow 1
+		background inherit
+		color inherit
+		box-shadow none !important
+	div, span
+		display inline-flex
+		justify-content center
+		align-items center
+		&:first-child
+			padding-right 8px
+		&:last-child
+			padding-left 8px
+legend
+	position relative
+	width 100%
+	&:before
+		content ""
+		position absolute
+		width 100%
+		height 65%
+		border-bottom: dashed 2px colors.dark[0]
+	span
+		position relative
+		padding-right 16px
+		display inline-block
+		background: colors.black[0]
+.group
+	display flex
+	align-items center
+	> * + *
+		margin-left 4px
+.fields
+	> *
+		margin-top 4px
+.fas, .fa
+	font-size smaller
+.row
+	display flex
+	flex-direction row
+	flex-wrap nowrap
+	&.reverse
+		flex-direction row-reverse
+.column
+	display flex
+	flex-direction column
+	flex-wrap nowrap
+	&.reverse
+		flex-direction column-reverse
+.wrap
+	flex-wrap wrap
+for i in 1..12
+	val = floor(i / 12 * 100%, 2)
+	.col-{i}
+		flex-basis val
+	.row > .col-{i}
+		width val
+	.column > .col-{i}
+		height val
+	val = floor(12 / i / 12 * 100%, 2)
+	.grid-{i}
+		height 0
+		display grid
+		grid-template-columns repeat(i, 1fr)
+.col
+	flex-grow 1
+	min-height 0
+.col-0
+	flex-grow 0
+.start
+	justify-content flex-start
+.center
+	justify-content center
+.end
+	justify-content flex-end
+.between
+	justify-content space-between
+.around
+	justify-content space-around
+.evenly
+	justify-content space-evenly
+.top
+	align-items flex-start
+.middle
+	align-items center
+.bottom
+	align-items flex-end
+.stretch
+	align-items stretch
+.self-start
+	margin-right auto
+.self-center
+	margin-left auto
+	margin-right auto
+.self-end
+	margin-left auto
+.self-top
+	align-self flex-start
+.self-middle
+	align-self center
+.self-bottom
+	align-self flex-end
+.self-stretch
+	align-self stretch
+for i in 0..5
+	.z-{i}
+		z-index i
+	if i
+		.-z-{i}
+			z-index -(i)
+.scroll
+	overflow auto
+.scroll-x
+	overflow-x auto
+	overflow-y hidden
+.scroll-y
+	overflow-x hidden
+	overflow-y auto
+.no-scroll
+	overflow hidden
+.select
+	user-select auto
+.no-select
+	user-select none
+.event
+.events> *
+	pointer-events auto
+.no-event
+.no-events> *
+	pointer-events none
+for align in left center right
+	.text-{align}
+		text-align align
+.text-wrap
+	white-space normal
+	word-break break-word
+.text-nowrap
+	white-space nowrap
+.text-truncate
+	overflow hidden
+	text-overflow ellipsis
+	white-space pre
+small
+.text-sm
+	font-size 13px
+.text-lg
+	font-size 30px
+.text-mono
+	font-family "Courier", monospace
+.text-bold
+	font-weight 700
+.leading-1
+	line-height 1
+for pos in absolute relative fixed sticky
+	.{pos}
+		position pos
+for dis in block inline-block inline flex inline-flex grid inline-grid
+	.{dis}
+		display dis
+[hidden]
+.hidden
+	display none !important
+.full
+	position absolute
+	left 0
+	top 0
+	width 100%
+	height 100%
+for val in range(0, 100, 25)
+	.l-{val}
+		left (val)%
+	.t-{val}
+		top (val)%
+	.w-{val}
+		width (val)%
+	.h-{val}
+		height (val)%
+	.opacity-{val}
+		opacity (val / 100)
+for prop in padding margin
+	p = substr(prop 0 1)
+	for val, size in spaces
+		size = 5 - size
+		arr = p is "m" ? (-1 1) : (1)
+		for i in arr
+			if i is 1 or i is -1 and size
+				s = i is 1 ? "" : "-"
+				val2 = (val * i) !important
+				.{s}{p}-{size}
+					{prop} val2
+				.{s}{p}x-{size}
+					{prop}-left val2
+					{prop}-right val2
+				.{s}{p}y-{size}
+					{prop}-top val2
+					{prop}-bottom val2
+				.{s}{p}t-{size}
+					{prop}-top val2
+				.{s}{p}r-{size}
+					{prop}-right val2
+				.{s}{p}b-{size}
+					{prop}-bottom val2
+				.{s}{p}l-{size}
+					{prop}-left val2
+for val in 100 50 0
+	.trans-{val}
+		transform translate((val)%, (val)%)
+	if val
+		.-trans-{val}
+			transform translate(-(val)%, -(val)%)
+	.transx-{val}
+		transform translateX((val)%)
+	if val
+		.-transx-{val}
+			transform translateX(-(val)%)
+	.transy-{val}
+		transform translateY((val)%)
+	if val
+		.-transy-{val}
+			transform translateY(-(val)%)
+for val, i in spaces
+	i = 5 - i
+	.gap-{i}
+		grid-gap val
+for name, val in colors
+	.{name}
+	.hover-{name}:hover
+		background val[0]
+		color: val[1]
+	.text-{name}
+	.hover-text-{name}:hover
+		color val[0]
+	.bound-{name}
+	.hover-bound-{name}:hover
+		box-shadow 0 0 0 2px inset val[0]
+	.bound-{name}-1
+	.hover-bound-{name}-1:hover
+		box-shadow 0 0 0 1px inset val[0]
+	.shadow-{name}
+	.hover-shadow-{name}:hover
+		box-shadow 0 0 0 2px val[0]
+	.divide-x-{name}
+		> * + *
+			border-left solid 2px val[0]
+	.divide-y-{name}
+		> * + *
+			border-top solid 2px val[0]
+	.shape-dot-{name}
+		width 2px
+		height 2px
+		background val[0]
+.bound-0
+.shadow-0
+	box-shadow none
